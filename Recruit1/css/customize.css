@@ -1,0 +1,15 @@
+﻿body {
+    background-color: white;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+.ng-cloak {
+    display: none;
+}
+
+.title {
+    margin-left: 220px;
+}

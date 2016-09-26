@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo App</title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootflat/bootflat.min.css" rel="stylesheet" />
+    <link href="css/customize.css" rel="stylesheet" />
+</head>
+<body ng-app="app" ng-controller="pageCtrl as vm">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Todo App</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-search search-only">
+                        <i class="search-icon glyphicon glyphicon-search"></i>
+                        <input type="text" class="form-control search-query" ng-model="search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+   
+    <div class="container">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <form class="input-group" ng-submit="todo = ''">
+                    <input type="text" autofocus class="form-control" placeholder="Add new item..." ng-model="todo" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary" ng-click="vm.add(todo)">Add</button>
+                    </span>
+                </form>
+            </div>
+            <div class="panel-body" ng-if="vm.items.length >0">
+                <div class="list-group">
+                    <div class="list-group-item ng-cloak" ng-repeat="i in vm.items |filter:search track by $index">
+                        <button class="btn btn-sm btn-success" type="button" ng-click="vm.success($index)">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                        <span class="title">{{i.name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer" ng-if="vm.items.length >0">
+                Number of items: <span class="ng-cloak">{{vm.items.length}}</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-1.11.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
